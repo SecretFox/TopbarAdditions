@@ -55,7 +55,9 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 		m_Character.SignalStatChanged.Connect(updateIcon, this);
 		m_pos = Point(config.FindEntry("CoordPos", new Point(550, 0)));
 		m_BG = Boolean(config.FindEntry("m_BG", true));
-		m_swfRoot.onEnterFrame = Delegate.create(this, onframe);
+		if (m_swfRoot.TopIcon == undefined){
+			CreateTopIcon();
+		}
 	}
 
 	public function Deactivate() {
@@ -63,13 +65,6 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 		config.AddEntry("CoordPos", m_pos);
 		config.AddEntry("m_BG", m_BG);
 		return config
-	}
-
-	private function onframe():Void {
-		m_swfRoot.onEnterFrame = undefined;
-		if (m_swfRoot.TopIcon == undefined) {
-			CreateTopIcon();
-		}
 	}
 
 	private function UpdatePosition():Void {

@@ -20,7 +20,9 @@ class com.fox.Topbar.Coordinates.Icon {
 	public function Activate(config:Archive):Void {
 		m_Character = Character.GetClientCharacter();
 		m_pos = Point(config.FindEntry("CoordPos", new Point(650, 0)));
-		m_swfRoot.onEnterFrame = Delegate.create(this, onframe);
+		if (m_swfRoot.TopIcon == undefined){
+			CreateTopIcon();
+		}
 		clearInterval(updateInterval);
 		updateInterval = setInterval(Delegate.create(this, updateIcon), 1000);
 	}
@@ -58,12 +60,6 @@ class com.fox.Topbar.Coordinates.Icon {
 		m_Coordinates._x = m_pos.x;
 		m_Coordinates._y = m_pos.y;
 	}
-
-	private function onframe():Void {
-		m_swfRoot.onEnterFrame = undefined;
-		if (m_swfRoot.TopIcon == undefined)CreateTopIcon();
-	}
-
 	private function updateIcon() {
 		var playerpos = m_Character.GetPosition();
 		m_CoordinateText.text = string(Math.round(playerpos.x)) + "," + string(Math.round(playerpos.z));

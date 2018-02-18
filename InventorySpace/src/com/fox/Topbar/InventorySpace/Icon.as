@@ -58,12 +58,7 @@ class com.fox.Topbar.InventorySpace.Icon {
 		m_Inventory.SignalItemChanged.Connect(updateIcon, this);
 		m_Inventory.SignalItemRemoved.Connect(updateIcon, this);
 		m_Character.SignalStatChanged.Connect(SlotCharacterStatChanged, this);
-		m_swfRoot.onEnterFrame = Delegate.create(this, onframe);
-	}
-
-	private function onframe():Void {
-		m_swfRoot.onEnterFrame = undefined;
-		if (m_swfRoot.TopIcon == undefined) {
+		if (m_swfRoot.TopIcon == undefined){
 			CreateTopIcon();
 		}
 	}
