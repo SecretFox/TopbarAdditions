@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?> 
+<Root>
+	<Value name="Coordinates" value="true" />
+	<Archive name="Coordinates_Data" />
+	
+	<Value name="Allocation" value="true" />
+	<Archive name="Allocation_Data" />
+	
+	<Value name="InventorySpace" value="true" />
+	<Archive name="InventorySpace_Data" />
+</Root>

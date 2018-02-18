@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Root>
+  <Module  name = "Coordinates"
+    movie       = "TopbarAdditions\Coordinates.swf"
+    flags       = "GMF_DONT_UNLOAD | GMF_CFG_STORE_USER_CONFIG"
+    depth_layer = "Top"
+    sub_depth   = "2"
+    variable    = "Coordinates"
+    criteria    = "Coordinates &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+	config_name = "Coordinates_Data"
+  />
+  <Module  name = "Allocation"
+    movie       = "TopbarAdditions\Allocation.swf"
+    flags       = "GMF_DONT_UNLOAD | GMF_CFG_STORE_USER_CONFIG"
+    depth_layer = "Top"
+    sub_depth   = "2"
+    variable    = "Allocation"
+    criteria    = "Allocation &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+	config_name = "Allocation_Data"
+  />
+  <Module  name = "InventorySpace"
+    movie       = "TopbarAdditions\InventorySpace.swf"
+    flags       = "GMF_DONT_UNLOAD | GMF_CFG_STORE_USER_CONFIG"
+    depth_layer = "Top"
+    sub_depth   = "2"
+    variable    = "InventorySpace"
+    criteria    = "InventorySpace &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+	config_name = "InventorySpace_Data"
+  />
+</Root>
