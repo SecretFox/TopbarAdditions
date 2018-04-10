@@ -91,6 +91,7 @@ class com.fox.Topbar.InventorySpace.Icon {
 	private function update() {
 		var current = _root.backpack2.CalcNumItems();
 		var max = m_Inventory.GetMaxItems();
+		if (!max || !current) setTimeout(Delegate.create(this, update), 50);
 		if (current > max - 6) {
 			m_InvSpaceText.textColor=0xFF0000
 		} else if (current>max-11) {
