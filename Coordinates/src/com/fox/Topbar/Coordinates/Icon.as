@@ -24,7 +24,7 @@ class com.fox.Topbar.Coordinates.Icon {
 			CreateTopIcon();
 		}
 		clearInterval(updateInterval);
-		updateInterval = setInterval(Delegate.create(this, updateIcon), 1000);
+		updateInterval = setInterval(Delegate.create(this, updateIcon), 500);
 	}
 
 	public function Deactivate() {
