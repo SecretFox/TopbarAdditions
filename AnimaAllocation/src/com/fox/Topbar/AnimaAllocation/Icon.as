@@ -22,9 +22,16 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 	private var m_BG:Boolean;
 
 	public function Icon(swfRoot: MovieClip) {
-		m_swfRoot = swfRoot
-	}
+		m_swfRoot = swfRoot;
 
+	}
+	public function Load() {
+		m_Character = Character.GetClientCharacter();
+		m_Character.SignalStatChanged.Connect(updateIcon, this);
+	}
+	public function Unload() {
+		m_Character.SignalStatChanged.Disconnect(updateIcon, this);
+	}
 	//Ghetto Guiedit
 	private function GuiEdit(state:Boolean) {
 		if (state) {
@@ -51,11 +58,9 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 	}
 
 	public function Activate(config:Archive):Void {
-		m_Character = Character.GetClientCharacter();
-		m_Character.SignalStatChanged.Connect(updateIcon, this);
 		m_pos = Point(config.FindEntry("CoordPos", new Point(550, 0)));
 		m_BG = Boolean(config.FindEntry("m_BG", true));
-		if (m_swfRoot.TopIcon == undefined){
+		if (!m_AllocationIcon) {
 			CreateTopIcon();
 		}
 	}
@@ -79,14 +84,11 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 	}
 
 	private function ChangeTab() {
-		if (_root.skillhivesimple) {
-			if (_root.skillhivesimple.m_ContentLoaded && _root.skillhivesimple.m_Window.m_ButtonBar.clip2.onPress && _root.skillhivesimple.m_Window.m_ButtonBar.clip2.onRelease) {
-				_root.skillhivesimple.m_Window.m_ButtonBar.clip2.onPress();
-				_root.skillhivesimple.m_Window.m_ButtonBar.clip2.onRelease();
+		if (skillHive_Window.GetValue()) {
+			if (_root.skillhivesimple.m_ContentLoaded && _root.skillhivesimple.m_Window.m_ButtonBar.clip2) {
+				SwitchTab();
 			} else {
-				if (skillHive_Window.GetValue()) {
-					setTimeout(Delegate.create(this, ChangeTab), 50);
-				}
+				setTimeout(Delegate.create(this, ChangeTab), 50);
 			}
 		}
 	}
@@ -129,7 +131,7 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 	private function OpenAnimaAllocation() {
 		if (!skillHive_Window.GetValue()) {
 			skillHive_Window.SetValue(true);
-			setTimeout(Delegate.create(this, ChangeTab), 25);
+			ChangeTab();
 		} else {
 			skillHive_Window.SetValue(false);
 		}
@@ -148,7 +150,7 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 		m_Dps.selectable = false;
 		m_Dps.embedFonts = true;
 		m_Dps.autoSize = true;
-		format.color = 0xff2531
+		format.color = 0xff2531;
 		m_Dps.setNewTextFormat(format);
 		m_Dps.setTextFormat(format);
 
@@ -162,7 +164,7 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 		m_Heal.selectable = false;
 		m_Heal.embedFonts = true;
 		m_Heal.autoSize = true;
-		format.color = 0x16d951
+		format.color = 0x16d951;
 		m_Heal.setNewTextFormat(format);
 		m_Heal.setTextFormat(format);
 
@@ -170,10 +172,6 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 		m_AllocationIcon._y = m_pos.y;
 		updateIcon();
 		GlobalSignal.SignalSetGUIEditMode.Connect(GuiEdit, this);
-		m_AllocationIcon.onPress = Delegate.create(this, OpenAnimaAllocation);
-		m_AllocationIcon.onPressAux = Delegate.create(this, function () {
-			this.m_BG = !this.m_BG;
-			this.m_Icon._visible = this.m_BG;
-		});
+		GuiEdit(false);
 	}
 }

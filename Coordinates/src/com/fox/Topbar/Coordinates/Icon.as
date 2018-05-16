@@ -15,12 +15,14 @@ class com.fox.Topbar.Coordinates.Icon {
 
 	public function Icon(swfRoot: MovieClip) {
 		m_swfRoot = swfRoot;
-	}
 
-	public function Activate(config:Archive):Void {
+	}
+	public function Load() {
 		m_Character = Character.GetClientCharacter();
+	}
+	public function Activate(config:Archive):Void {
 		m_pos = Point(config.FindEntry("CoordPos", new Point(650, 0)));
-		if (m_swfRoot.TopIcon == undefined){
+		if (!m_Coordinates) {
 			CreateTopIcon();
 		}
 		clearInterval(updateInterval);
@@ -28,7 +30,6 @@ class com.fox.Topbar.Coordinates.Icon {
 	}
 
 	public function Deactivate() {
-		clearInterval(updateInterval);
 		var config:Archive = new Archive();
 		config.AddEntry("CoordPos", m_pos);
 		return config

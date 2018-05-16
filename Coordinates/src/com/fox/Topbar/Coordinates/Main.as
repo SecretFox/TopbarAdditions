@@ -8,10 +8,13 @@ class com.fox.Topbar.Coordinates.Main {
 		s_app = new Icon(swfRoot);
 		swfRoot.OnModuleActivated = OnActivated;
 		swfRoot.OnModuleDeactivated = OnDeactivated;
+		swfRoot.onLoad = Load;
 	}
 
 	public function Main() { }
-
+	public static function Load() {
+		s_app.Load();
+	}
 	public static function OnActivated(config: Archive):Void {
 		s_app.Activate(config);
 	}
