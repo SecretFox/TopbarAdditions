@@ -11,9 +11,10 @@ class com.fox.Topbar.meeehrPos.Main {
 	}
 	public function DoTheThing(){
 		if (_root.mainmenuwindow.LayoutHooks[100] && !_root.mainmenuwindow.LayoutHooks[101]){
-			 _root.mainmenuwindow.LayoutHooks[101] = OnLayOut;
+			_root.mainmenuwindow.LayoutHooks[101] = OnLayOut;
+			_root.mainmenuwindow.Layout();
 		}
-		_root.mainmenuwindow.Layout();
+
 	}
 	public function OnLayOut(){
 	   var friends = _root.mainmenuwindow.m_FriendsIconContainer;
