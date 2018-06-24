@@ -112,19 +112,19 @@ class com.fox.Topbar.AnimaAllocation.Icon {
 		//health
 		if (health != 0) {
 			if (dps != 0) m_Health._x = m_Dps._x + m_Dps._width;
-			else m_Health._x = m_Icon._width+2;
+			else m_Health._x = m_Icon._width + 2;
 		} else {
 			m_Health.text = "";
-			m_Health._x = m_Icon._width+2;
+			m_Health._x = m_Icon._width + 2;
 		}
 		//healing
 		if (heal != 0) {
 			if (health != 0) m_Heal._x = m_Health._x + m_Health._width;
 			else if (dps != 0) m_Heal._x = m_Dps._x + m_Dps._width;
-			else m_Heal._x =m_Icon._width+2;
+			else m_Heal._x = m_Icon._width + 2;
 		} else {
 			m_Heal.text = "";
-			m_Heal._x = m_Icon._width+2;
+			m_Heal._x = m_Icon._width + 2;
 		}
 	}
 

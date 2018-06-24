@@ -27,4 +27,13 @@
     criteria    = "InventorySpace &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
 	config_name = "InventorySpace_Data"
   />
+  <Module  name = "meeehrPos"
+    movie       = "TopbarAdditions\meeehrPos.swf"
+    flags       = "GMF_CFG_STORE_USER_CONFIG"
+    depth_layer = "Top"
+    sub_depth   = "2"
+    variable    = "meeehrPos"
+    criteria    = "meeehrPos &amp;&amp; (guimode &amp; (GUIMODEFLAGS_INPLAY | GUIMODEFLAGS_ENABLEALLGUI))"
+	config_name = "meeehrPos_Data"
+  />
 </Root>

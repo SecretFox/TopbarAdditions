@@ -8,4 +8,7 @@
 	
 	<Value name="InventorySpace" value="true" />
 	<Archive name="InventorySpace_Data" />
+	
+	<Value name="meeehrPos" value="true" />
+	<Archive name="meeehrPos_Data" />
 </Root>
